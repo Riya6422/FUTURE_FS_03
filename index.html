@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Railways - Future of Indian Railways</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            border-radius: 10px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(25, 118, 210, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #2196f3, #1976d2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            border-radius: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-menu a:hover::before {
+            opacity: 1;
+        }
+
+        .nav-menu a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        /* Hero Section with 3D Train */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff08" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            animation: waveMove 20s ease-in-out infinite;
+        }
+
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(-20px) rotate(1deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: slideUp 1s ease 0.5s forwards;
+            background: linear-gradient(135deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideUp 1s ease 0.7s forwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideUp 1s ease 0.9s forwards;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e3f2fd;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 3D Train Animation */
+        .train-3d {
+            position: absolute;
+            bottom: 50px;
+            left: -200px;
+            font-size: 4rem;
+            animation: train3DMove 20s linear infinite;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes train3DMove {
+            0% {
+                left: -200px;
+                transform: rotateY(0deg) scale(1);
+            }
+            25% {
+                transform: rotateY(-10deg) scale(1.1);
+            }
+            50% {
+                transform: rotateY(0deg) scale(1);
+            }
+            75% {
+                transform: rotateY(10deg) scale(1.1);
+            }
+            100% {
+                left: calc(100vw + 200px);
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        /* Smart Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            padding: 4rem 2rem;
+            margin-top: -100px;
+            position: relative;
+            z-index: 3;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .booking-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .booking-card {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(33, 150, 243, 0.1), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .booking-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #333;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .booking-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            border: none;
+            background: #f0f0f0;
+            color: #666;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .swap-btn {
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .swap-btn:hover {
+            transform: translateY(-50%) rotate(180deg) scale(1.1);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f9f9f9, #ffffff);
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #1976d2;
+            box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
+            transform: translateY(-3px);
+            background: white;
+        }
+
+        .input-group label {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: white;
+            padding: 0 10px;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .search-btn {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+            border: none;
+            padding: 1.5rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(33, 150, 243, 0.4);
+        }
+
+        .search-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .search-btn:hover::before {
+            left: 100%;
+        }
+
+        /* AI Assistant Chat */
+        .ai-assistant {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-toggle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(25, 118, 210, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 10px 30px rgba(25, 118, 210, 0.3); }
+            50% { box-shadow: 0 10px 30px rgba(25, 118, 210, 0.6); }
+            100% { box-shadow: 0 10px 30px rgba(25, 118, 210, 0.3); }
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 400px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+
+        .message {
+            background: white;
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 1rem;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+        }
+
+        .chat-input button {
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* Features Gallery */
+        .features-gallery {
+            padding: 5rem 2rem;
+            background: #f8f9ff;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .gallery-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-image {
+            height: 200px;
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="%23ffffff20"/><circle cx="30" cy="30" r="15" fill="%23ffffff10"/><circle cx="70" cy="70" r="10" fill="%23ffffff15"/></svg>');
+            animation: floatBubbles 10s ease-in-out infinite;
+        }
+
+        @keyframes floatBubbles {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+
+        .feature-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .feature-content {
+            padding: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .feature-btn {
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .feature-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
+        }
+
+        /* Train Route Visualizer */
+        .route-visualizer {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
+            color: white;
+        }
+
+        .visualizer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .visualizer-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .route-map {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .route-line {
+            position: relative;
+            height: 4px;
+            background: linear-gradient(90deg, #2196f3, #1976d2, #0d47a1);
+            border-radius: 2px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .route-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100px;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: routeProgress 3s ease-in-out infinite;
+        }
+
+        @keyframes routeProgress {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+
+        .route-stations {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .station {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .station-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2196f3;
+            box-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
+            animation: stationPulse 2s infinite;
+        }
+
+        @keyframes stationPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .station-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Live Updates with Enhanced UI */
+        .live-updates {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .updates-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .updates-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .updates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .update-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .update-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2196f3, #1976d2);
+            animation: progressBar 3s ease-in-out infinite;
+        }
+
+        @keyframes progressBar {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
+        }
+
+        .update-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .update-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .update-status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            animation: statusBlink 2s infinite;
+        }
+
+        @keyframes statusBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .status-ontime {
+            background: #2196f3;
+            color: white;
+        }
+
+        .status-delayed {
+            background: #333;
+            color: white;
+        }
+
+        .status-cancelled {
+            background: #000;
+            color: white;
+        }
+
+        .update-time {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .train-progress {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #2196f3, #1976d2);
+            border-radius: 4px;
+            animation: progressMove 5s ease-in-out infinite;
+        }
+
+        @keyframes progressMove {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 100%; }
+        }
+
+        /* Weather Widget */
+        .weather-widget {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            min-width: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .weather-icon {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-temp {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+        }
+
+        .weather-desc {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #000, #333);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #2196f3;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #2196f3;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+
+            .swap-btn {
+                display: none;
+            }
+
+            .chat-window {
+                width: 300px;
+            }
+
+            .weather-widget {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 2rem auto;
+                width: fit-content;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .route-stations {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2196f3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Notification Toast */
+        .notification {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.3);
+            z-index: 1001;
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><img src="a.png" alt="image"></div>
+                <div>
+                    <h2> ....   Indian Railways</h2>
+                    <small>............      Lifeline to the nation</small>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#booking">Smart Booking</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#routes">Live Routes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Weather Widget -->
+    <div class="weather-widget">
+        <div class="weather-icon">🌤️</div>
+        <div class="weather-temp">28°C</div>
+        <div class="weather-desc">Partly Cloudy</div>
+        <div class="weather-desc">Delhi</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>Journey Redefined</h1>
+            <p class="hero-subtitle">Experience the future of Indian Railways with AI-powered bookings, real-time tracking, and seamless travel</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">12K+</div>
+                    <div class="stat-label">Trains Daily</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7K+</div>
+                    <div class="stat-label">Stations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2.3M</div>
+                    <div class="stat-label">Daily Passengers</div>
+                </div>
+            </div>
+        </div>
+        <div class="train-3d">🚄💨✨</div>
+    </section>
+
+    <!-- Smart Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="booking-container">
+            <div class="booking-card">
+                <h2 class="booking-title">🎯 Smart Booking System</h2>
+                <div class="booking-tabs">
+                    <button class="tab-btn active" data-tab="train">🚂 Train</button>
+                    <button class="tab-btn" data-tab="bus">🚌 Bus</button>
+                    <button class="tab-btn" data-tab="metro">🚇 Metro</button>
+                </div>
+                <form class="booking-form" id="bookingForm">
+                    <div class="input-group">
+                        <label>📍 From Station</label>
+                        <input type="text" id="from" placeholder="Enter departure station" list="stations" required>
+                        <datalist id="stations">
+                            <option value="New Delhi">
+                            <option value="Mumbai Central">
+                            <option value="Chennai Central">
+                            <option value="Kolkata">
+                            <option value="Bangalore">
+                            <option value="Hyderabad">
+                            <option value="Pune">
+                            <option value="Ahmedabad">
+                        </datalist>
+                        <button type="button" class="swap-btn" id="swapBtn">🔄</button>
+                    </div>
+                    <div class="input-group">
+                        <label>🎯 To Station</label>
+                        <input type="text" id="to" placeholder="Enter destination station" list="stations" required>
+                    </div>
+                    <div class="input-group">
+                        <label>📅 Journey Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="input-group">
+                        <label>🎫 Travel Class</label>
+                        <select id="class" required>
+                            <option value="">Select Travel Class</option>
+                            <option value="ac1">🥇 AC First Class (1A)</option>
+                            <option value="ac2">🥈 AC 2 Tier (2A)</option>
+                            <option value="ac3">🥉 AC 3 Tier (3A)</option>
+                            <option value="sleeper">🛏️ Sleeper (SL)</option>
+                            <option value="cc">💺 Chair Car (CC)</option>
+                            <option value="general">🎫 General</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>👥 Passengers</label>
+                        <select id="passengers" required>
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5+ Passengers</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>⚡ Quick Options</label>
+                        <select id="quickOptions">
+                            <option value="">Select Option</option>
+                            <option value="fastest">⚡ Fastest Route</option>
+                            <option value="cheapest">💰 Cheapest Fare</option>
+                            <option value="premium">👑 Premium Trains</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-btn">
+                        <span id="searchText">🔍 Find Best Trains</span>
+                        <span id="searchLoader" class="loading" style="display: none;"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant -->
+    <div class="ai-assistant">
+        <button class="chat-toggle" id="chatToggle">🤖</button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                🤖 RailBot Assistant
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message">
+                    <strong>RailBot:</strong> Hi! I'm your AI travel assistant. Ask me about trains, bookings, or travel tips! 🚂
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Ask me anything...">
+                <button id="sendChat">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Gallery -->
+    <section class="features-gallery" id="features">
+        <div class="gallery-container">
+            <h2 class="gallery-title">🌟 Revolutionary Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <div class="feature-icon">🤖</div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>AI-Powered Recommendations</h3>
+                        <p>Get personalized train suggestions based on your travel history, preferences, and real-time availability. Our AI learns your patterns to suggest the perfect journey.</p>
+                        <button class="feature-btn" onclick="showFeatureDemo('ai')">Try AI Assistant</button>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <div class="feature-icon">📱</div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Smart Mobile Experience</h3>
+                        <p>Book tickets, check PNR status, track trains, and manage your journey - all from your smartphone with our intuitive mobile-first design.</p>
+                        <button class="feature-btn" onclick="showFeatureDemo('mobile')">Download App</button>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <div class="feature-icon">🗺️</div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Live Train Tracking</h3>
+                        <p>Track your train in real-time with GPS precision. Get live updates on delays, platform changes, and expected arrival times.</p>
+                        <button class="feature-btn" onclick="showFeatureDemo('tracking')">View Live Map</button>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <div class="feature-icon">🍽️</div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Food & Dining Services</h3>
+                        <p>Pre-order meals from top restaurants and get them delivered to your seat. Browse menus, track delivery, and enjoy fresh food on board.</p>
+                        <button class="feature-btn" onclick="showFeatureDemo('food')">Order Food</button>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <div class="feature-icon">💳</div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Seamless Payments</h3>
+                        <p>Multiple payment options including UPI, cards, wallets, and EMI. Secure transactions with instant confirmation and digital receipts.</p>
+                        <button class="feature-btn" onclick="showFeatureDemo('payment')">Payment Options</button>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-image">
+                        <div class="feature-icon">🎯</div>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Smart Seat Selection</h3>
+                        <p>Choose your preferred seat with our interactive coach layout. View amenities, select window/aisle preferences, and book the perfect spot.</p>
+                        <button class="feature-btn" onclick="showFeatureDemo('seats')">Select Seats</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Train Route Visualizer -->
+    <section class="route-visualizer" id="routes">
+        <div class="visualizer-container">
+            <h2 class="visualizer-title">🗺️ Live Route Visualizer</h2>
+            <div class="route-map">
+                <h3>Delhi → Mumbai Route</h3>
+                <div class="route-stations">
+                    <div class="station">
+                        <div class="station-dot"></div>
+                        <div class="station-name">New Delhi</div>
+                        <div class="station-time">06:00</div>
+                    </div>
+                    <div class="station">
+                        <div class="station-dot"></div>
+                        <div class="station-name">Jaipur</div>
+                        <div class="station-time">10:30</div>
+                    </div>
+                    <div class="station">
+                        <div class="station-dot"></div>
+                        <div class="station-name">Ajmer</div>
+                        <div class="station-time">13:15</div>
+                    </div>
+                    <div class="station">
+                        <div class="station-dot"></div>
+                        <div class="station-name">Vadodara</div>
+                        <div class="station-time">19:45</div>
+                    </div>
+                    <div class="station">
+                        <div class="station-dot"></div>
+                        <div class="station-name">Mumbai</div>
+                        <div class="station-time">08:30+1</div>
+                    </div>
+                </div>
+                <div class="route-line"></div>
+                <p>🚄 Current Location: Between Jaipur and Ajmer</p>
+                <p>⏱️ Expected Arrival: On Time</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Live Updates -->
+    <section class="live-updates">
+        <div class="updates-container">
+            <h2 class="updates-title">📊 Live Train Updates</h2>
+            <div class="updates-grid">
+                <div class="update-card">
+                    <div class="update-header">
+                        <span class="update-status status-ontime">✅ On Time</span>
+                        <span class="update-time">Updated 2 min ago</span>
+                    </div>
+                    <h3>🚄 Vande Bharat Express - 22470</h3>
+                    <p>📍 New Delhi → Shri Mata Vaishno Devi Katra</p>
+                    <p><strong>Platform:</strong> 16 | <strong>Coach:</strong> B1-B8</p>
+                    <p><strong>Next Stop:</strong> Ambala (15:30)</p>
+                    <div class="train-progress">
+                        <div class="progress-bar" style="width: 45%;"></div>
+                    </div>
+                </div>
+
+                <div class="update-card">
+                    <div class="update-header">
+                        <span class="update-status status-delayed">⚠️ Delayed</span>
+                        <span class="update-time">Updated 1 min ago</span>
+                    </div>
+                    <h3>🚂 Rajdhani Express - 12301</h3>
+                    <p>📍 New Delhi → Howrah Junction</p>
+                    <p><strong>Platform:</strong> 4 | <strong>Coach:</strong> A1-H5</p>
+                    <p><strong>Delay:</strong> 25 minutes (Weather conditions)</p>
+                    <div class="train-progress">
+                        <div class="progress-bar" style="width: 30%;"></div>
+                    </div>
+                </div>
+
+                <div class="update-card">
+                    <div class="update-header">
+                        <span class="update-status status-ontime">✅ On Time</span>
+                        <span class="update-time">Updated 30 sec ago</span>
+                    </div>
+                    <h3>⚡ Gatimaan Express - 12049</h3>
+                    <p>📍 Hazrat Nizamuddin → Agra Cantt</p>
+                    <p><strong>Platform:</strong> 3 | <strong>Coach:</strong> C1-C8</p>
+                    <p><strong>Speed:</strong> 160 km/h | <strong>Next:</strong> Agra (08:10)</p>
+                    <div class="train-progress">
+                        <div class="progress-bar" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🚄 Indian Railways</h3>
+                <p>Revolutionizing train travel in India with cutting-edge technology and user-centric design.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">🐦</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">💼</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#">🎫 Book Tickets</a>
+                <a href="#">📱 PNR Status</a>
+                <a href="#">🗓️ Train Schedule</a>
+                <a href="#">💺 Seat Availability</a>
+                <a href="#">🍽️ Food Booking</a>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <a href="#">❓ Help Center</a>
+                <a href="#">📞 Customer Care</a>
+                <a href="#">📧 Email Support</a>
+                <a href="#">💬 Live Chat</a>
+                <a href="#">📱 Mobile App</a>
+            </div>
+            <div class="footer-section">
+                <h3>Travel Info</h3>
+                <a href="#">🗺️ Route Maps</a>
+                <a href="#">📊 Train Status</a>
+                <a href="#">🏨 Hotel Booking</a>
+                <a href="#">🚕 Cab Services</a>
+                <a href="#">🌤️ Weather Updates</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Indian Railways - Future of Indian Railways. All rights reserved.</p>
+            <p>🛡️ Secure • 🚀 Fast • 🎯 Reliable</p>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // Swap functionality
+        document.getElementById('swapBtn').addEventListener('click', function() {
+            const fromInput = document.getElementById('from');
+            const toInput = document.getElementById('to');
+            const temp = fromInput.value;
+            fromInput.value = toInput.value;
+            toInput.value = temp;
+            
+            // Add animation
+            this.style.transform = 'translateY(-50%) rotate(180deg) scale(1.2)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(-50%) rotate(0deg) scale(1)';
+            }, 300);
+            
+            showNotification('🔄 Stations swapped!');
+        });
+
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                showNotification(`🎯 ${this.textContent} booking selected!`);
+            });
+        });
+
+        // Form submission with enhanced feedback
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+            const date = document.getElementById('date').value;
+            const trainClass = document.getElementById('class').value;
+            const passengers = document.getElementById('passengers').value;
+            
+            if (!from || !to || !date || !trainClass) {
+                showNotification('⚠️ Please fill in all required fields', 'error');
+                return;
+            }
+            
+            // Enhanced loading state
+            const button = document.querySelector('.search-btn');
+            const searchText = document.getElementById('searchText');
+            const searchLoader = document.getElementById('searchLoader');
+            
+            searchText.style.display = 'none';
+            searchLoader.style.display = 'inline-block';
+            button.disabled = true;
+            button.style.background = '#ccc';
+            
+            // Simulate AI processing
+            setTimeout(() => {
+                searchText.style.display = 'inline';
+                searchLoader.style.display = 'none';
+                button.disabled = false;
+                button.style.background = 'linear-gradient(135deg, #2196f3, #1976d2)';
+                
+                showNotification(`🎉 Found 12 trains from ${from} to ${to}!`);
+                
+                // Simulate results display
+                setTimeout(() => {
+                    alert(`🚄 Search Results:\n\n✅ Vande Bharat Express - ₹2,150\n✅ Shatabdi Express - ₹1,890\n✅ Rajdhani Express - ₹3,200\n\nClick to book your preferred train!`);
+                }, 1000);
+            }, 3000);
+        });
+
+        // AI Chat Assistant
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendChat = document.getElementById('sendChat');
+
+        chatToggle.addEventListener('click', function() {
+            if (chatWindow.style.display === 'flex') {
+                chatWindow.style.display = 'none';
+            } else {
+                chatWindow.style.display = 'flex';
+                chatInput.focus();
+            }
+        });
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message';
+            userMsg.innerHTML = `<strong>You:</strong> ${message}`;
+            chatMessages.appendChild(userMsg);
+            
+            chatInput.value = '';
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const responses = [
+                    "🚂 I can help you find the best trains! What's your destination?",
+                    "💺 Would you like me to check seat availability for your journey?",
+                    "🍽️ I can also help you pre-order meals for your trip!",
+                    "📱 You can track your train live using our GPS feature!",
+                    "💳 We support UPI, cards, and EMI payments for easy booking!",
+                    "🎯 Our AI suggests the best routes based on your preferences!"
+                ];
+                
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message';
+                botMsg.innerHTML = `<strong>RailBot:</strong> ${responses[Math.floor(Math.random() * responses.length)]}`;
+                chatMessages.appendChild(botMsg);
+                
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        sendChat.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Feature demonstrations
+        function showFeatureDemo(feature) {
+            const demos = {
+                'ai': '🤖 AI Assistant activated! Our smart system is analyzing thousands of routes to find your perfect journey...',
+                'mobile': '📱 Mobile App: Download from Play Store or App Store for the complete RailYatra experience!',
+                'tracking': '🗺️ Live tracking enabled! Your train location updates every 30 seconds with GPS precision.',
+                'food': '🍽️ Food menu loading... Choose from 50+ restaurants and get fresh meals delivered to your seat!',
+                'payment': '💳 Payment options: UPI, Credit/Debit Cards, Net Banking, Wallets, and EMI available!',
+                'seats': '🎯 Smart seat selection: Choose from interactive coach layout with amenities and preferences!'
+            };
+            
+            showNotification(demos[feature]);
+        }
+
+        // Notification system
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification show';
+            
+            if (type === 'error') {
+                notification.style.background = 'linear-gradient(135deg, #000, #333)';
+            } else {
+                notification.style.background = 'linear-gradient(135deg, #2196f3, #1976d2)';
+            }
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(25, 118, 210, 0.98)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
+            } else {
+                header.style.background = 'rgba(25, 118, 210, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            }
+        });
+
+        // Dynamic weather update
+        function updateWeather() {
+            const weather = [
+                { icon: '☀️', temp: '32°C', desc: 'Sunny' },
+                { icon: '⛅', temp: '28°C', desc: 'Partly Cloudy' },
+                { icon: '🌧️', temp: '24°C', desc: 'Light Rain' },
+                { icon: '🌤️', temp: '30°C', desc: 'Mostly Sunny' }
+            ];
+            
+            const current = weather[Math.floor(Math.random() * weather.length)];
+            document.querySelector('.weather-icon').textContent = current.icon;
+            document.querySelector('.weather-temp').textContent = current.temp;
+            document.querySelector('.weather-desc').textContent = current.desc;
+        }
+
+        // Update weather every 30 seconds
+        setInterval(updateWeather, 30000);
+
+        // Auto-update train status
+        setInterval(() => {
+            const statusElements = document.querySelectorAll('.update-status');
+            const timeElements = document.querySelectorAll('.update-time');
+            
+            statusElements.forEach((status, index) => {
+                if (Math.random() > 0.9) {
+                    const statuses = [
+                        { text: '✅ On Time', class: 'status-ontime' },
+                        { text: '⚠️ Delayed', class: 'status-delayed' },
+                        { text: '❌ Cancelled', class: 'status-cancelled' }
+                    ];
+                    const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+                    
+                    status.textContent = randomStatus.text;
+                    status.className = `update-status ${randomStatus.class}`;
+                    
+                    if (timeElements[index]) {
+                        timeElements[index].textContent = 'Updated just now';
+                    }
+                }
+            });
+        }, 15000);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.feature-card, .update-card, .booking-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Welcome message
+        setTimeout(() => {
+            showNotification('🎉 Welcome to RailYatra - The Future of Train Travel!');
+        }, 2000);
+
+        // Auto-suggest for stations
+        const stations = ['New Delhi', 'Mumbai Central', 'Chennai Central', 'Kolkata', 'Bangalore', 'Hyderabad', 'Pune', 'Ahmedabad', 'Jaipur', 'Lucknow', 'Kanpur', 'Agra'];
+        
+        function setupAutoComplete(inputId) {
+            const input = document.getElementById(inputId);
+            input.addEventListener('input', function() {
+                const value = this.value.toLowerCase();
+                const datalist = document.getElementById('stations');
+                datalist.innerHTML = '';
+                
+                stations.filter(station => station.toLowerCase().includes(value))
+                    .forEach(station => {
+                        const option = document.createElement('option');
+                        option.value = station;
+                        datalist.appendChild(option);
+                    });
+            });
+        }
+        
+        setupAutoComplete('from');
+        setupAutoComplete('to');
+    </script>
+</body>
+</html>
